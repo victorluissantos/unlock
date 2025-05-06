@@ -1,0 +1,11 @@
+opencv-python-headless
+scikit-learn
+scikit-image
+matplotlib
+requests
+joblib
+numpy
+uvicorn
+fastapi
+motor
+pydantic

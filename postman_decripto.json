@@ -1,0 +1,82 @@
+{
+  "info": {
+    "name": "CAPTCHA Solver API",
+    "_postman_id": "abcdef12-3456-7890-abcd-ef1234567890",
+    "description": "Examples for the `/decripto` endpoint using the “zeta” model",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Decrypt via Base64 in Body",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"modelo\": \"zeta\",\n  \"type\": \"base64\",\n  \"content\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA...\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/decripto",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["decripto"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Decrypt via URL Returning Base64",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"modelo\": \"zeta\",\n  \"type\": \"base64\",\n  \"url\": \"https://example.com/captcha-base64\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/decripto",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["decripto"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Decrypt via URL Returning PNG Image",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"modelo\": \"zeta\",\n  \"type\": \"image\",\n  \"url\": \"https://example.com/captcha.png\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/decripto",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["decripto"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

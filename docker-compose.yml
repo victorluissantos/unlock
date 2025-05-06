@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  mongo:
+    build:
+      context: ./IaC/Mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+  fastapi:
+    build:
+      context: ./IaC
+      dockerfile: fastAPI/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URL=mongodb://mongo:27017
+  python:
+    build:
+      context: ./IaC
+      dockerfile: python/Dockerfile
+    volumes:
+      - ./datahouse:/app/datahouse
+    working_dir: /app/datahouse
+    stdin_open: true
+    tty: true
+    entrypoint: ["bash"]
+volumes:
+  mongo_data:
